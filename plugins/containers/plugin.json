@@ -1,0 +1,124 @@
+{
+  "id": "containers",
+  "name": "Containers",
+  "version": "1.0.0",
+  "description": "Watch and run a project's containers. A Containers button beside Todos and Git shows how many of its Compose services or dev containers are up, amber when one fails or is unhealthy; its panel lists each with its state and ports, and starts, stops, restarts, follows logs or opens a shell in any of them. Also a status bar chip, a live dashboard tab, and Start, Stop and Logs in a tab's or workspace's right-click menu. Docker or Podman.",
+  "author": "Octet",
+  "keywords": [
+    "compose",
+    "containers",
+    "dev container",
+    "docker",
+    "docker compose",
+    "logs",
+    "podman",
+    "services"
+  ],
+  "octet": 1,
+  "platforms": [
+    "macos",
+    "linux"
+  ],
+  "contributes": {
+    "statusItems": [
+      {
+        "id": "containers",
+        "name": "Containers",
+        "summary": "How many of the project's containers are up; each one's state on hover",
+        "sample": "3 up",
+        "icon": "icons/docker.svg",
+        "color": "2496ED",
+        "run": "sh \"$OCTET_PLUGIN_DIR/scripts/chip.sh\"",
+        "whenFiles": [
+          "compose.yaml",
+          "compose.yml",
+          "docker-compose.yml",
+          "docker-compose.yaml",
+          ".devcontainer",
+          ".devcontainer.json"
+        ],
+        "refreshSeconds": 10,
+        "timeoutSeconds": 8,
+        "enabledByDefault": true
+      }
+    ],
+    "menuItems": [
+      {
+        "id": "dashboard",
+        "title": "Containers",
+        "whenFiles": [
+          "compose.yaml",
+          "compose.yml",
+          "docker-compose.yml",
+          "docker-compose.yaml",
+          ".devcontainer",
+          ".devcontainer.json"
+        ],
+        "run": "sh \"$OCTET_PLUGIN_DIR/scripts/open.sh\" dashboard",
+        "timeoutSeconds": 8
+      },
+      {
+        "id": "start",
+        "title": "Start Containers",
+        "whenFiles": [
+          "compose.yaml",
+          "compose.yml",
+          "docker-compose.yml",
+          "docker-compose.yaml",
+          ".devcontainer",
+          ".devcontainer.json"
+        ],
+        "run": "sh \"$OCTET_PLUGIN_DIR/scripts/open.sh\" start",
+        "timeoutSeconds": 8
+      },
+      {
+        "id": "stop",
+        "title": "Stop Containers",
+        "whenFiles": [
+          "compose.yaml",
+          "compose.yml",
+          "docker-compose.yml",
+          "docker-compose.yaml",
+          ".devcontainer",
+          ".devcontainer.json"
+        ],
+        "run": "sh \"$OCTET_PLUGIN_DIR/scripts/open.sh\" stop",
+        "timeoutSeconds": 8
+      },
+      {
+        "id": "logs",
+        "title": "Container Logs",
+        "whenFiles": [
+          "compose.yaml",
+          "compose.yml",
+          "docker-compose.yml",
+          "docker-compose.yaml",
+          ".devcontainer",
+          ".devcontainer.json"
+        ],
+        "run": "sh \"$OCTET_PLUGIN_DIR/scripts/open.sh\" logs",
+        "timeoutSeconds": 8
+      }
+    ],
+    "panels": [
+      {
+        "id": "containers",
+        "title": "Containers",
+        "icon": "icons/docker.svg",
+        "color": "2496ED",
+        "run": "sh \"$OCTET_PLUGIN_DIR/scripts/panel.sh\"",
+        "act": "sh \"$OCTET_PLUGIN_DIR/scripts/act.sh\"",
+        "whenFiles": [
+          "compose.yaml",
+          "compose.yml",
+          "docker-compose.yml",
+          "docker-compose.yaml",
+          ".devcontainer",
+          ".devcontainer.json"
+        ],
+        "refreshSeconds": 10,
+        "timeoutSeconds": 20
+      }
+    ]
+  }
+}
