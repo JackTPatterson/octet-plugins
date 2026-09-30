@@ -2,6 +2,64 @@
   "version": 1,
   "plugins": [
     {
+      "id": "containers",
+      "name": "Containers",
+      "description": "Watch and run a project's containers. A Containers button beside Todos and Git shows how many of its Compose services or dev containers are up, amber when one fails or is unhealthy; its panel lists each with its state and ports, and starts, stops, restarts, follows logs or opens a shell in any of them. Also a status bar chip, a live dashboard tab, and Start, Stop and Logs in a tab's or workspace's right-click menu. Docker or Podman.",
+      "author": "Octet",
+      "version": "1.0.0",
+      "keywords": [
+        "compose",
+        "containers",
+        "dev container",
+        "docker",
+        "docker compose",
+        "logs",
+        "podman",
+        "services"
+      ],
+      "platforms": [
+        "macos",
+        "linux"
+      ],
+      "repo": "JackTPatterson/octet-plugins",
+      "ref": "main",
+      "path": "plugins/containers",
+      "files": [
+        {
+          "path": "plugin.json",
+          "sha256": "7a8d8948461847147da7130dcfa0714e550443f5e99b6162a4769fd6e780e942"
+        },
+        {
+          "path": "icons/docker.svg",
+          "sha256": "65571291c261ef869c31540a38f3ca0f0ee3bb73f179c172211c8860f19a6359"
+        },
+        {
+          "path": "scripts/act.sh",
+          "sha256": "b29b0a02dd6299b954ab996fe1753048dba88a4bf04979982dd5f40619791cc5"
+        },
+        {
+          "path": "scripts/chip.sh",
+          "sha256": "260a203bdb161c46ef048fe021245e20978c11dd83e81fc149252cf02ea1970a"
+        },
+        {
+          "path": "scripts/dashboard.sh",
+          "sha256": "83c6630686a48c1dbd8908434dad5ad59db1e7fe6c64946b839f99f2db628223"
+        },
+        {
+          "path": "scripts/lib.sh",
+          "sha256": "bdeac8533cfbf6a717b2f58fa4ce171bb47067c5381b681b36a6158df8773cec"
+        },
+        {
+          "path": "scripts/open.sh",
+          "sha256": "5299701cda0966cb75ce3b3b53ae65b3310783d0a90ae30b20fce80f05329098"
+        },
+        {
+          "path": "scripts/panel.sh",
+          "sha256": "9d47b6292a156a626fcda9a3c52657c0147daf24e59b2e8c7b4b2ac8b769bd15"
+        }
+      ]
+    },
+    {
       "id": "dev-runtimes",
       "name": "Runtime Icons",
       "description": "Marks a tab with what's running in it: dev servers like Next, Vite and Expo, runtimes like Node, Bun and Deno, and languages like Python, Rust, TypeScript and Go.",

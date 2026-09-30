@@ -34,7 +34,8 @@ def check_manifest(folder, manifest, files):
         if platform not in PLATFORMS:
             problems.append(f"{folder}: unknown platform {platform}")
     contributes = manifest.get("contributes", {})
-    runs = [c.get("run") for kind in ("statusItems", "completions", "menuItems") for c in contributes.get(kind, [])]
+    runs = [c.get(key) for kind in ("statusItems", "completions", "menuItems", "panels")
+            for c in contributes.get(kind, []) for key in ("run", "act") if c.get(key)]
     for run in runs:
         commands = [run] if isinstance(run, str) else list((run or {}).values())
         for command in commands:
@@ -42,7 +43,7 @@ def check_manifest(folder, manifest, files):
             for script in re.findall(r"OCTET_PLUGIN_DIR[/\\\\]+([\w./\\\\-]+)", command or ""):
                 if script.replace("\\\\", "/") not in files:
                     problems.append(f"{folder}: runs {script}, which isn't in the plugin")
-    for icon in [c.get("icon") for kind in ("statusItems", "runtimes") for c in contributes.get(kind, [])]:
+    for icon in [c.get("icon") for kind in ("statusItems", "runtimes", "panels") for c in contributes.get(kind, [])]:
         if icon and icon not in files:
             problems.append(f"{folder}: icon {icon} is missing")
 
