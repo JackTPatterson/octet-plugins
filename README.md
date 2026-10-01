@@ -12,6 +12,12 @@ scripts/build-registry.py
 
 CI checks every pull request: manifests are valid, every script a command names ships with its plugin, shell scripts parse, and `registry.json` matches the files (`scripts/build-registry.py --check`). Octet reads `registry.json` from `main`, so merging is publishing.
 
+## Install links and updates
+
+`octet://plugin?id=<id>` opens Octet and offers to install that plugin from the registry, after saying where it comes from. Use it as an "Install in Octet" link in a README or on a web page, e.g. [octet://plugin?id=containers](octet://plugin?id=containers).
+
+Octet checks the registry at launch and every few hours. When a plugin's `version` here is newer than the installed one, Octet updates it automatically, or tells you if automatic updates are off (Settings › Plugins). It updates only plugins installed from the registry, and keeps each one turned on or off as it was. So to ship a fix, bump `version` and rebuild the index.
+
 ## Publishing yours
 
 Keep the plugin in your own public GitHub repository, then open a pull request adding an entry to `community.json`:

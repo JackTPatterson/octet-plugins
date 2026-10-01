@@ -1,7 +1,8 @@
 # Shared by the Jira scripts: where Jira is, who you are, and one request.
 #
 # Settings, first found wins:
-#   ~/.config/octet/jira   JIRA_URL=https://acme.atlassian.net
+#   ~/.config/octet/jira   JIRA_URL=https://acme.atlassian.net   (alone, the
+#                          branch's issue chip is still a link to the issue)
 #                          JIRA_EMAIL=you@acme.com        (Jira Cloud)
 #                          JIRA_API_TOKEN=...             (or leave out, below)
 #   jira-cli's ~/.config/.jira/.config.yml, for the server and login
