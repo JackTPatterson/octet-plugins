@@ -664,6 +664,41 @@
       ]
     },
     {
+      "id": "project-icons",
+      "name": "Project Icons",
+      "description": "Gives each workspace in the sidebar its project's own icon: a web app's favicon (from index.html's link, Next.js's app icon, or public/ and static/), an Expo or React Native app's icon from app.json, an iOS or Mac app's AppIcon, or an Android or Flutter launcher icon. A running agent's state shows as a dot on its corner.",
+      "author": "Octet",
+      "version": "1.0.0",
+      "keywords": [
+        "app icon",
+        "favicon",
+        "icon",
+        "sidebar",
+        "workspace",
+        "ios",
+        "android",
+        "expo",
+        "next"
+      ],
+      "platforms": [
+        "macos",
+        "linux"
+      ],
+      "repo": "JackTPatterson/octet-plugins",
+      "ref": "main",
+      "path": "plugins/project-icons",
+      "files": [
+        {
+          "path": "find-icon.sh",
+          "sha256": "3fc34d1d418b036cc296093186aa23a00fafbc377115cea89acb9b7f2605e483"
+        },
+        {
+          "path": "plugin.json",
+          "sha256": "b650f6328f7d2c169e3d1ed383b52cabd68fe663288d5da3e9c3abe58d04de3c"
+        }
+      ]
+    },
+    {
       "id": "status-chips",
       "name": "Status Chips",
       "description": "More chips for the status bar under the terminal: git upstream and stashes, package managers and Python environments, Kubernetes, cloud and Docker contexts, listening ports, and the machine at the other end of an SSH session. Arrange them in Settings › Status Bar.",
