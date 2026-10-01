@@ -1,0 +1,63 @@
+{
+  "id": "my-plugin",
+  "name": "My Plugin",
+  "version": "1.0.0",
+  "description": "A starting point: a status bar chip, a panel with actions, a right-click item, a completion and a setting, all around the TODO comments in a git repository. Rename it, keep what you need, delete the rest.",
+  "author": "you",
+  "keywords": ["todo", "example"],
+  "octet": 1,
+  "platforms": ["macos", "linux"],
+  "settings": [
+    {
+      "id": "TODO_PATTERN",
+      "title": "What to look for",
+      "placeholder": "TODO|FIXME",
+      "detail": "A regular expression for git grep. Empty means TODO|FIXME."
+    }
+  ],
+  "contributes": {
+    "statusItems": [
+      {
+        "id": "todos",
+        "name": "TODOs",
+        "summary": "How many TODO comments the repository has; the first few on hover",
+        "sample": "4 TODO",
+        "symbol": "checklist",
+        "color": "E5C07B",
+        "run": "sh \"$OCTET_PLUGIN_DIR/scripts/chip.sh\"",
+        "whenFiles": [".git"],
+        "refreshSeconds": 30,
+        "enabledByDefault": true
+      }
+    ],
+    "panels": [
+      {
+        "id": "todos",
+        "title": "TODOs",
+        "symbol": "checklist",
+        "run": "sh \"$OCTET_PLUGIN_DIR/scripts/panel.sh\"",
+        "act": "sh \"$OCTET_PLUGIN_DIR/scripts/act.sh\"",
+        "whenFiles": [".git"],
+        "refreshSeconds": 30
+      }
+    ],
+    "menuItems": [
+      {
+        "id": "todos",
+        "title": "List TODOs",
+        "whenFiles": [".git"],
+        "run": "sh \"$OCTET_PLUGIN_DIR/scripts/menu.sh\""
+      }
+    ],
+    "completions": [
+      {
+        "command": "todo",
+        "path": ["open"],
+        "summary": "Open a file with TODOs",
+        "run": "sh \"$OCTET_PLUGIN_DIR/scripts/files.sh\"",
+        "kind": "file",
+        "cacheSeconds": 30
+      }
+    ]
+  }
+}
