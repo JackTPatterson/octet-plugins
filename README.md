@@ -2,6 +2,8 @@
 
 The Marketplace's **Plugins** section lists agent plugins and terminal plugins together; filter by *Agents* or *Terminal*. Terminal plugins come from this repository: `registry.json` is the index Octet downloads, and each entry names a plugin's files, their SHA-256, and the GitHub repository they're downloaded from. Octet checks every file against its checksum and the manifest's id against the entry before installing into `~/Library/Application Support/Octet/Plugins/<id>`.
 
+**Writing one?** Read [PLUGINS.md](PLUGINS.md), the guide to every part a plugin can add, and start from [`template/`](template/).
+
 ## Octet's own plugins
 
 Each is a folder in `plugins/` with a `plugin.json`. After changing one, bump its `version` (installed copies are offered the update) and rebuild the index:

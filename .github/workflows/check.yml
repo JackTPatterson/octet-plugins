@@ -13,6 +13,6 @@ jobs:
       - name: Manifests are valid and the index is current
         run: python3 scripts/build-registry.py --check
       - name: Shell scripts parse
-        run: find plugins -name '*.sh' -print0 | xargs -0 -n1 sh -n
+        run: find plugins template -name '*.sh' -print0 | xargs -0 -n1 sh -n
       - name: Shell scripts pass shellcheck
-        run: find plugins -name '*.sh' -print0 | xargs -0 shellcheck --severity=error --shell=sh
+        run: find plugins template -name '*.sh' -print0 | xargs -0 shellcheck --severity=error --shell=sh
