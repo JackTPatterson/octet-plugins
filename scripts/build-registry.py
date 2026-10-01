@@ -34,7 +34,7 @@ def check_manifest(folder, manifest, files):
         if platform not in PLATFORMS:
             problems.append(f"{folder}: unknown platform {platform}")
     contributes = manifest.get("contributes", {})
-    runs = [c.get(key) for kind in ("statusItems", "completions", "menuItems", "panels")
+    runs = [c.get(key) for kind in ("statusItems", "completions", "menuItems", "panels", "workspaceIcons")
             for c in contributes.get(kind, []) for key in ("run", "act") if c.get(key)]
     for run in runs:
         commands = [run] if isinstance(run, str) else list((run or {}).values())
