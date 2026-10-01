@@ -1,7 +1,7 @@
 {
   "id": "issues",
   "name": "Issues",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Jira and GitHub issues where you work. The status bar shows the issue your branch is for (ENG-142-retry, 123-fix-login) and the issues assigned to you; click to open. Typing gh issue view, develop, close or comment lists the repository's open issues, and jira issue view, move or assign lists yours. GitHub uses the gh CLI's sign-in. Connect Jira in Settings › Plugins (or click the Jira chip): your site, email and an API token, kept in the Keychain. ~/.config/octet/jira and jira-cli's config are read too.",
   "author": "Octet",
   "keywords": [

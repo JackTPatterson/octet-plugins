@@ -23,10 +23,14 @@ key_only() {
   fi
 }
 if ! jira_config; then
-  if [ -n "$JIRA_URL" ]; then
+  if [ -n "$OCTET_PLUGIN_SETTINGS_URL" ]; then
+    # Octet asks for what's missing right on the chip.
+    echo "$key"
+    echo "tone: muted"
+    echo "help: Click to connect Jira and see $key's status"
+    echo "url: $OCTET_PLUGIN_SETTINGS_URL"
+  elif [ -n "$JIRA_URL" ]; then
     key_only "Open $key in Jira. For its status here, add your email and an API token in Settings › Plugins › Issues"
-  elif [ -n "$OCTET_PLUGIN_SETTINGS_URL" ]; then
-    key_only "Click to connect Jira: your site, email and an API token, in Settings › Plugins"
   else
     key_only "Connect Jira to open and see this issue: put JIRA_URL (e.g. https://acme.atlassian.net), JIRA_EMAIL and JIRA_API_TOKEN in ~/.config/octet/jira. Click to make a token."
   fi
