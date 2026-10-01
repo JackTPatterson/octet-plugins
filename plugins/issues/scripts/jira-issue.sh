@@ -7,13 +7,30 @@ key=$(printf '%s' "$branch" | grep -oE '[A-Za-z][A-Za-z0-9]{1,9}-[0-9]+' | head 
 [ -n "$key" ] || exit 0
 # Standards that look like keys: utf-8, iso-8601, sha-256.
 case "${key%%-*}" in UTF|ISO|SHA|RFC|MD|HTTP|IPV|WCAG|ES|PEP) exit 0 ;; esac
-if ! jira_config; then
+# Without its status, the key alone: still a link to the issue when the
+# site is known, else to where a Jira API token is made.
+key_only() {
   echo "$key"
   echo "tone: muted"
-  echo "help: Connect Jira to see this issue: put JIRA_URL, JIRA_EMAIL and JIRA_API_TOKEN in ~/.config/octet/jira"
+  echo "help: $1"
+  if [ -n "$JIRA_URL" ]; then
+    echo "url: $JIRA_URL/browse/$key"
+  else
+    echo "url: https://id.atlassian.com/manage-profile/security/api-tokens"
+  fi
+}
+if ! jira_config; then
+  if [ -n "$JIRA_URL" ]; then
+    key_only "Open $key in Jira. For its status here, add JIRA_EMAIL and JIRA_API_TOKEN to ~/.config/octet/jira"
+  else
+    key_only "Connect Jira to open and see this issue: put JIRA_URL (e.g. https://acme.atlassian.net), JIRA_EMAIL and JIRA_API_TOKEN in ~/.config/octet/jira. Click to make a token."
+  fi
   exit 0
 fi
-body=$(jira_get "/rest/api/2/issue/$key?fields=summary,status,assignee") || exit 0
+if ! body=$(jira_get "/rest/api/2/issue/$key?fields=summary,status,assignee"); then
+  key_only "Open $key in Jira. Jira didn't answer with its status: check JIRA_EMAIL and JIRA_API_TOKEN, or that the issue exists"
+  exit 0
+fi
 json '(function(){
   var f = d.fields, s = f.status || {}, cat = (s.statusCategory || {}).key;
   var tone = cat === "done" ? "success" : cat === "new" ? "muted" : "normal";

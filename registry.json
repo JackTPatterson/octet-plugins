@@ -608,7 +608,7 @@
       "name": "Issues",
       "description": "Jira and GitHub issues where you work. The status bar shows the issue your branch is for (ENG-142-retry, 123-fix-login) and the issues assigned to you; click to open. Typing gh issue view, develop, close or comment lists the repository's open issues, and jira issue view, move or assign lists yours. GitHub uses the gh CLI's sign-in. For Jira, put JIRA_URL, JIRA_EMAIL and JIRA_API_TOKEN in ~/.config/octet/jira, or keep the token in the Keychain under octet-jira; jira-cli's config is read too.",
       "author": "Octet",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "keywords": [
         "jira",
         "github",
@@ -627,7 +627,7 @@
       "files": [
         {
           "path": "plugin.json",
-          "sha256": "1e03eaf39a7fe1ca967febf672af3a9134e81df053fd7828da85fca0cd4d985b"
+          "sha256": "179e5b00e763f1b0a5a9f2e962d18995d7a6b7d3bc110319cceef5f09ed7a6f4"
         },
         {
           "path": "icons/github.svg",
@@ -647,7 +647,7 @@
         },
         {
           "path": "scripts/jira-issue.sh",
-          "sha256": "8f71907fa2c83099e7107b802f25857f4830a8242e5c4689e3bb402085193b1d"
+          "sha256": "63fa9fab5f9e8635a69c3f961de8339385bd09d254c5b33cc1e38bd222b60fe3"
         },
         {
           "path": "scripts/jira-issues.sh",
@@ -655,7 +655,7 @@
         },
         {
           "path": "scripts/jira-lib.sh",
-          "sha256": "1529a9b4f9d7adb8d1181290b89530222c329ba81f0b6118e9acd2808afa3f1e"
+          "sha256": "336434be1384bfca9a3e1b3be58d6bb9f11d62fce469b1ac6989cb675ab0a4e3"
         },
         {
           "path": "scripts/my-issues.sh",
