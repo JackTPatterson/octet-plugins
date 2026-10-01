@@ -1,6 +1,8 @@
 # Shared by the Jira scripts: where Jira is, who you are, and one request.
 #
 # Settings, first found wins:
+#   Octet's own Settings › Plugins › Issues, handed over as JIRA_URL,
+#   JIRA_EMAIL and JIRA_API_TOKEN in the environment
 #   ~/.config/octet/jira   JIRA_URL=https://acme.atlassian.net   (alone, the
 #                          branch's issue chip is still a link to the issue)
 #                          JIRA_EMAIL=you@acme.com        (Jira Cloud)
@@ -16,8 +18,13 @@ PATH="$PATH:/opt/homebrew/bin:/usr/local/bin"
 
 jira_config() {
   conf="${XDG_CONFIG_HOME:-$HOME/.config}/octet/jira"
-  # shellcheck disable=SC1090
-  [ -f "$conf" ] && . "$conf"
+  if [ -f "$conf" ]; then
+    # What Octet handed over wins over the file.
+    url=$JIRA_URL email=$JIRA_EMAIL token=$JIRA_API_TOKEN
+    # shellcheck disable=SC1090
+    . "$conf"
+    JIRA_URL=${url:-$JIRA_URL} JIRA_EMAIL=${email:-$JIRA_EMAIL} JIRA_API_TOKEN=${token:-$JIRA_API_TOKEN}
+  fi
   cli="$HOME/.config/.jira/.config.yml"
   if [ -f "$cli" ]; then
     [ -n "$JIRA_URL" ] || JIRA_URL=$(sed -n 's/^server:[[:space:]]*//p' "$cli" | head -n 1 | tr -d "\"'")

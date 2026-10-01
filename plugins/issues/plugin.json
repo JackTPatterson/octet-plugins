@@ -1,8 +1,8 @@
 {
   "id": "issues",
   "name": "Issues",
-  "version": "1.1.0",
-  "description": "Jira and GitHub issues where you work. The status bar shows the issue your branch is for (ENG-142-retry, 123-fix-login) and the issues assigned to you; click to open. Typing gh issue view, develop, close or comment lists the repository's open issues, and jira issue view, move or assign lists yours. GitHub uses the gh CLI's sign-in. For Jira, put JIRA_URL, JIRA_EMAIL and JIRA_API_TOKEN in ~/.config/octet/jira, or keep the token in the Keychain under octet-jira; jira-cli's config is read too.",
+  "version": "1.2.0",
+  "description": "Jira and GitHub issues where you work. The status bar shows the issue your branch is for (ENG-142-retry, 123-fix-login) and the issues assigned to you; click to open. Typing gh issue view, develop, close or comment lists the repository's open issues, and jira issue view, move or assign lists yours. GitHub uses the gh CLI's sign-in. Connect Jira in Settings › Plugins (or click the Jira chip): your site, email and an API token, kept in the Keychain. ~/.config/octet/jira and jira-cli's config are read too.",
   "author": "Octet",
   "keywords": [
     "jira",
@@ -182,5 +182,26 @@
   "platforms": [
     "macos",
     "linux"
+  ],
+  "settings": [
+    {
+      "id": "JIRA_URL",
+      "title": "Jira site",
+      "placeholder": "https://acme.atlassian.net",
+      "detail": "Your Jira's address. On its own it makes the branch's issue chip a link."
+    },
+    {
+      "id": "JIRA_EMAIL",
+      "title": "Email",
+      "placeholder": "you@acme.com",
+      "detail": "The email you sign in to Jira Cloud with. Leave empty for Jira Server or Data Center."
+    },
+    {
+      "id": "JIRA_API_TOKEN",
+      "title": "API token",
+      "secret": true,
+      "detail": "From your Atlassian account; for Server or Data Center, a personal access token.",
+      "link": "https://id.atlassian.com/manage-profile/security/api-tokens"
+    }
   ]
 }
