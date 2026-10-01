@@ -6,7 +6,7 @@ The fastest start is to copy [`template/`](template/), which has one of each com
 
 - [The manifest](#the-manifest)
 - [How commands run](#how-commands-run)
-- [Surfaces](#surfaces): [completions](#completions), [status bar chips](#status-bar-chips), [right-click menu items](#right-click-menu-items), [panels](#panels), [workspace icons](#workspace-icons), [runtime icons](#runtime-icons)
+- [Surfaces](#surfaces): [completions](#completions), [status bar chips](#status-bar-chips), [right-click menu items](#right-click-menu-items), [panels](#panels), [workspace icons](#workspace-icons), [model policies](#model-policies), [runtime icons](#runtime-icons)
 - [Settings](#settings)
 - [macOS, Linux and Windows](#macos-linux-and-windows)
 - [Trying it](#trying-it) and [Publishing](#publishing)
@@ -154,6 +154,27 @@ The picture for a workspace in the sidebar, like the project's favicon or app ic
 ```
 
 Run in the workspace's folder; print the path of an image inside that folder (PNG, JPEG, ICO, ICNS, SVG, WebP or GIF), relative or absolute. Anything outside the folder is ignored. Printing nothing leaves the workspace as it was. See `plugins/project-icons`.
+
+### Model policies
+
+Pick the model and effort Octet's own Claude and Codex conversations run on, from how much of the account's allowance is used.
+
+```json
+"modelPolicies": [{ "id": "usage", "agents": ["claude", "codex"], "run": "sh \"$OCTET_PLUGIN_DIR/switch.sh\"" }]
+```
+
+Run between turns, in the conversation's folder, whenever the usage or the person's pick changes. Besides the usual variables it sees:
+
+| Variable | |
+|---|---|
+| `OCTET_AGENT` | `claude` or `codex`. |
+| `OCTET_MODEL`, `OCTET_EFFORT` | The model and effort the person picked (effort empty for the model's default). |
+| `OCTET_MODELS` | The model ids it can be moved to, space-separated, as the picker lists them. |
+| `OCTET_EFFORTS` | The efforts the picked model takes. |
+| `OCTET_USAGE_<WINDOW>` | Percent used of each running window: `OCTET_USAGE_5H`, `OCTET_USAGE_7D`, `OCTET_USAGE_7D_OPUS`. |
+| `OCTET_USAGE`, `OCTET_USAGE_WINDOW`, `OCTET_USAGE_RESETS_AT` | The fullest window's percent, name, and reset time (Unix seconds). |
+
+Print `model: <id>` and/or `effort: <level>`, and optionally `message: <why>`, which Octet shows in the conversation. A model the agent doesn't offer, or an effort the model doesn't take, is ignored. Print nothing to keep the person's pick: once a switch is no longer called for, Octet moves the conversation back by itself. If the person picks a model while switched, theirs stands until the policy stops calling for a switch. `agents` defaults to both. See `plugins/model-switcher`.
 
 ### Runtime icons
 
