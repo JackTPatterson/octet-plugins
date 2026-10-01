@@ -15,20 +15,25 @@ key_only() {
   echo "help: $1"
   if [ -n "$JIRA_URL" ]; then
     echo "url: $JIRA_URL/browse/$key"
+  elif [ -n "$OCTET_PLUGIN_SETTINGS_URL" ]; then
+    # Octet asks for what's missing in its own settings.
+    echo "url: $OCTET_PLUGIN_SETTINGS_URL"
   else
     echo "url: https://id.atlassian.com/manage-profile/security/api-tokens"
   fi
 }
 if ! jira_config; then
   if [ -n "$JIRA_URL" ]; then
-    key_only "Open $key in Jira. For its status here, add JIRA_EMAIL and JIRA_API_TOKEN to ~/.config/octet/jira"
+    key_only "Open $key in Jira. For its status here, add your email and an API token in Settings › Plugins › Issues"
+  elif [ -n "$OCTET_PLUGIN_SETTINGS_URL" ]; then
+    key_only "Click to connect Jira: your site, email and an API token, in Settings › Plugins"
   else
     key_only "Connect Jira to open and see this issue: put JIRA_URL (e.g. https://acme.atlassian.net), JIRA_EMAIL and JIRA_API_TOKEN in ~/.config/octet/jira. Click to make a token."
   fi
   exit 0
 fi
 if ! body=$(jira_get "/rest/api/2/issue/$key?fields=summary,status,assignee"); then
-  key_only "Open $key in Jira. Jira didn't answer with its status: check JIRA_EMAIL and JIRA_API_TOKEN, or that the issue exists"
+  key_only "Open $key in Jira. Jira didn't answer with its status: check the email and API token in Settings › Plugins › Issues, or that the issue exists"
   exit 0
 fi
 json '(function(){

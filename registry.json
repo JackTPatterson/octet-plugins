@@ -606,9 +606,9 @@
     {
       "id": "issues",
       "name": "Issues",
-      "description": "Jira and GitHub issues where you work. The status bar shows the issue your branch is for (ENG-142-retry, 123-fix-login) and the issues assigned to you; click to open. Typing gh issue view, develop, close or comment lists the repository's open issues, and jira issue view, move or assign lists yours. GitHub uses the gh CLI's sign-in. For Jira, put JIRA_URL, JIRA_EMAIL and JIRA_API_TOKEN in ~/.config/octet/jira, or keep the token in the Keychain under octet-jira; jira-cli's config is read too.",
+      "description": "Jira and GitHub issues where you work. The status bar shows the issue your branch is for (ENG-142-retry, 123-fix-login) and the issues assigned to you; click to open. Typing gh issue view, develop, close or comment lists the repository's open issues, and jira issue view, move or assign lists yours. GitHub uses the gh CLI's sign-in. Connect Jira in Settings › Plugins (or click the Jira chip): your site, email and an API token, kept in the Keychain. ~/.config/octet/jira and jira-cli's config are read too.",
       "author": "Octet",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "keywords": [
         "jira",
         "github",
@@ -627,7 +627,7 @@
       "files": [
         {
           "path": "plugin.json",
-          "sha256": "179e5b00e763f1b0a5a9f2e962d18995d7a6b7d3bc110319cceef5f09ed7a6f4"
+          "sha256": "c2e48eca67442ccaa99357ef95081df76e069df80ef501dec06aee38af825f41"
         },
         {
           "path": "icons/github.svg",
@@ -647,7 +647,7 @@
         },
         {
           "path": "scripts/jira-issue.sh",
-          "sha256": "63fa9fab5f9e8635a69c3f961de8339385bd09d254c5b33cc1e38bd222b60fe3"
+          "sha256": "127e872a918d74ef0b288841789ee813a4ca3f567b8f39972cce297909c2f9c5"
         },
         {
           "path": "scripts/jira-issues.sh",
@@ -655,7 +655,7 @@
         },
         {
           "path": "scripts/jira-lib.sh",
-          "sha256": "336434be1384bfca9a3e1b3be58d6bb9f11d62fce469b1ac6989cb675ab0a4e3"
+          "sha256": "2b5548fd2c7d60890de5d3284e5f674c56c489d8544e8f9326e5dc43ac3fb4b0"
         },
         {
           "path": "scripts/my-issues.sh",
