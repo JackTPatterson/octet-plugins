@@ -1,0 +1,68 @@
+{
+  "id": "model-switcher",
+  "name": "Auto Model Switcher",
+  "version": "1.0.0",
+  "description": "Stretches your Claude and Codex allowance: as a usage window fills, Octet's conversations step down between turns, first to medium effort, then to a smaller model (Sonnet, or Codex's mini), then to the smallest at low effort, and go back to the model you picked once the window resets. Each switch is noted in the conversation; picking a model yourself keeps it. Set the thresholds in Settings › Plugins.",
+  "author": "Octet",
+  "keywords": [
+    "usage",
+    "limits",
+    "model",
+    "effort",
+    "claude",
+    "codex",
+    "rate limit",
+    "switch"
+  ],
+  "octet": 1,
+  "platforms": [
+    "macos",
+    "linux"
+  ],
+  "settings": [
+    {
+      "id": "EFFORT_DOWN_AT",
+      "title": "Lower effort at (%)",
+      "placeholder": "70",
+      "detail": "Past this share of any usage window, turns run at medium effort."
+    },
+    {
+      "id": "MODEL_DOWN_AT",
+      "title": "Smaller model at (%)",
+      "placeholder": "85",
+      "detail": "Past this, conversations move to the smaller model, at medium effort."
+    },
+    {
+      "id": "LAST_RESORT_AT",
+      "title": "Smallest model at (%)",
+      "placeholder": "95",
+      "detail": "Past this, conversations move to the smallest model, at low effort."
+    },
+    {
+      "id": "CLAUDE_SMALLER",
+      "title": "Claude's smaller model",
+      "placeholder": "sonnet",
+      "detail": "Part of a model's name, like sonnet or opus; the newest that matches is used."
+    },
+    {
+      "id": "CLAUDE_SMALLEST",
+      "title": "Claude's smallest model",
+      "placeholder": "haiku"
+    },
+    {
+      "id": "CODEX_SMALLER",
+      "title": "Codex's smaller model",
+      "placeholder": "mini",
+      "detail": "Part of a Codex model's name; used past both model thresholds."
+    }
+  ],
+  "contributes": {
+    "modelPolicies": [
+      {
+        "id": "usage",
+        "run": "sh \"$OCTET_PLUGIN_DIR/switch.sh\"",
+        "timeoutSeconds": 5
+      }
+    ]
+  }
+}
