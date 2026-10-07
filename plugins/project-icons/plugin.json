@@ -1,7 +1,7 @@
 {
   "id": "project-icons",
   "name": "Project Icons",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Gives each workspace in the sidebar its project's own icon: a web app's favicon (from index.html's link, Next.js's app icon, or public/ and static/), an Expo or React Native app's icon from app.json, an iOS or Mac app's AppIcon, or an Android or Flutter launcher icon. A running agent's state shows as a dot on its corner.",
   "author": "Octet",
   "keywords": [

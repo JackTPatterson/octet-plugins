@@ -668,7 +668,7 @@
       "name": "Project Icons",
       "description": "Gives each workspace in the sidebar its project's own icon: a web app's favicon (from index.html's link, Next.js's app icon, or public/ and static/), an Expo or React Native app's icon from app.json, an iOS or Mac app's AppIcon, or an Android or Flutter launcher icon. A running agent's state shows as a dot on its corner.",
       "author": "Octet",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "keywords": [
         "app icon",
         "favicon",
@@ -690,11 +690,11 @@
       "files": [
         {
           "path": "find-icon.sh",
-          "sha256": "3fc34d1d418b036cc296093186aa23a00fafbc377115cea89acb9b7f2605e483"
+          "sha256": "11f18731ed660b2d096e5747961af760415d21267e72c5c484b56f906d306764"
         },
         {
           "path": "plugin.json",
-          "sha256": "b650f6328f7d2c169e3d1ed383b52cabd68fe663288d5da3e9c3abe58d04de3c"
+          "sha256": "2a376171dfadd4e6a45d31033f8d0bf2c2487ccd6b93c12b1b0ca5a0544771f6"
         }
       ]
     },

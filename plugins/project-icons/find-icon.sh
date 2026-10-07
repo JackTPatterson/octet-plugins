@@ -11,12 +11,28 @@ first() {
   done
 }
 
-# A file under the project, skipping what's built or installed.
+# A file under the project, skipping what's built or installed, and any
+# folder that is a repository of its own: that's another project's.
 search() {
   depth=$1
   shift
   find . -maxdepth "$depth" \( -name node_modules -o -name .git -o -name build -o -name dist -o -name .next \
-    -o -name Pods -o -name DerivedData -o -name .build -o -name vendor -o -name .expo \) -prune -o "$@" -print 2>/dev/null
+    -o -name Pods -o -name DerivedData -o -name .build -o -name vendor -o -name .expo \
+    -o \( -type d ! -path . -exec test -e '{}/.git' \; \) \) -prune -o "$@" -print 2>/dev/null
+}
+
+# Whether this folder is a project at all. A folder of projects (~/Developer)
+# isn't, and a search through it would turn up one of theirs.
+is_project() {
+  [ -e .git ] && return 0
+  for marker in package.json Package.swift project.yml Podfile pubspec.yaml build.gradle build.gradle.kts \
+    settings.gradle settings.gradle.kts app.json; do
+    [ -f "$marker" ] && return 0
+  done
+  for bundle in ./*.xcodeproj ./*.xcworkspace; do
+    [ -d "$bundle" ] && return 0
+  done
+  return 1
 }
 
 # 1. What the web page itself links: <link rel="icon" href="...">.
@@ -47,8 +63,10 @@ for config in app.json app.config.json; do
 done
 first assets/icon.png assets/images/icon.png assets/adaptive-icon.png
 
-# 4. iOS and macOS: the largest image in the app icon set.
-set_dir=$(search 6 -type d -name 'AppIcon.appiconset' | head -n 1)
+# 4. iOS and macOS: the largest image in the app icon set, looked for only
+# in a project.
+set_dir=
+is_project && set_dir=$(search 6 -type d -name 'AppIcon.appiconset' | head -n 1)
 if [ -n "$set_dir" ]; then
   largest='' size=0
   for image in "$set_dir"/*.png "$set_dir"/*.jpg "$set_dir"/*.jpeg; do
