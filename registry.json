@@ -813,6 +813,69 @@
           "sha256": "bb09830b7c021a179558cc8474a68eddfa279bf703c16c64373b45b83ac0c842"
         }
       ]
+    },
+    {
+      "id": "vercel",
+      "name": "Vercel",
+      "description": "Your Vercel deployments where you work. A Vercel button beside Todos and Git shows how the branch's newest deployment went; its panel lists what's in production on your domain, the branch's previews and the recent deployments, opens any of them, follows build or runtime logs, and promotes, rolls back, redeploys or cancels one, asking first. Deploy a preview or to production, pull the environment and run vercel dev from the panel or a tab's right-click menu. A status bar chip shows the branch's deployment as it builds; click it for the site or its logs. Typing vercel inspect, logs, promote, rollback or redeploy lists the project's deployments, and vercel switch your teams. Uses the Vercel CLI's sign-in, or a token in Settings › Plugins; the project is the one vercel link set up, monorepos included.",
+      "author": "Octet",
+      "version": "1.0.0",
+      "keywords": [
+        "vercel",
+        "deploy",
+        "deployments",
+        "preview",
+        "production",
+        "hosting",
+        "next.js",
+        "rollback",
+        "logs"
+      ],
+      "platforms": [
+        "macos",
+        "linux"
+      ],
+      "repo": "JackTPatterson/octet-plugins",
+      "ref": "main",
+      "path": "plugins/vercel",
+      "files": [
+        {
+          "path": "plugin.json",
+          "sha256": "881545346121ca04bb2b8723c615e512e6c143c6daf5dc8a4aa2fafe5aea8aa8"
+        },
+        {
+          "path": "icons/vercel.svg",
+          "sha256": "57f1e4135486c566e9878fddd259f7f6bf8ec43f31e7e6e38a36d9e814a1c0e0"
+        },
+        {
+          "path": "scripts/act.sh",
+          "sha256": "535c4ad8b27e44e750d09056f102fffdbc65a7757b40b7f32cab9c0e6f1a4e69"
+        },
+        {
+          "path": "scripts/chip.sh",
+          "sha256": "972f8a3e7a498d703e92b6e0061f80d3f84c36069555e9dddaa7a001b34c2916"
+        },
+        {
+          "path": "scripts/complete.sh",
+          "sha256": "9d4d6933f3cde79678b09f9587e9db728373c87737689618c95d2004407c1e1a"
+        },
+        {
+          "path": "scripts/lib.sh",
+          "sha256": "9e12000ee42c39025b30af5a0b1ed0478c9628b173a1d0d1c982783f25582abd"
+        },
+        {
+          "path": "scripts/menu.sh",
+          "sha256": "01cfd5bdd2e00ef4d493e1a111131ca46e5e10d6a43a0a11c52188026c251f92"
+        },
+        {
+          "path": "scripts/panel.sh",
+          "sha256": "aee731549bf9b7d1f0dc095860139aab498424d0a44e851ab802b153579a0433"
+        },
+        {
+          "path": "scripts/vercel.js",
+          "sha256": "22d1694e83cc2295dc5455ae60b42d21175b0cd3253ed994e0d2e4f07e2c87f8"
+        }
+      ]
     }
   ]
 }
