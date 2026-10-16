@@ -1,0 +1,203 @@
+{
+  "id": "vercel",
+  "name": "Vercel",
+  "version": "1.0.0",
+  "description": "Your Vercel deployments where you work. A Vercel button beside Todos and Git shows how the branch's newest deployment went; its panel lists what's in production on your domain, the branch's previews and the recent deployments, opens any of them, follows build or runtime logs, and promotes, rolls back, redeploys or cancels one, asking first. Deploy a preview or to production, pull the environment and run vercel dev from the panel or a tab's right-click menu. A status bar chip shows the branch's deployment as it builds; click it for the site or its logs. Typing vercel inspect, logs, promote, rollback or redeploy lists the project's deployments, and vercel switch your teams. Uses the Vercel CLI's sign-in, or a token in Settings › Plugins; the project is the one vercel link set up, monorepos included.",
+  "author": "Octet",
+  "keywords": [
+    "vercel",
+    "deploy",
+    "deployments",
+    "preview",
+    "production",
+    "hosting",
+    "next.js",
+    "rollback",
+    "logs"
+  ],
+  "octet": 1,
+  "platforms": [
+    "macos",
+    "linux"
+  ],
+  "settings": [
+    {
+      "id": "VERCEL_TOKEN",
+      "title": "Access token",
+      "secret": true,
+      "detail": "Not needed when the Vercel CLI is signed in (vercel login): its sign-in is used. Otherwise, a token with access to your team.",
+      "link": "https://vercel.com/account/tokens"
+    }
+  ],
+  "contributes": {
+    "panels": [
+      {
+        "id": "vercel",
+        "title": "Vercel",
+        "icon": "icons/vercel.svg",
+        "color": "000000",
+        "run": "sh \"$OCTET_PLUGIN_DIR/scripts/panel.sh\"",
+        "act": "sh \"$OCTET_PLUGIN_DIR/scripts/act.sh\"",
+        "whenFiles": [
+          ".vercel",
+          "vercel.json"
+        ],
+        "refreshSeconds": 15,
+        "timeoutSeconds": 25
+      }
+    ],
+    "statusItems": [
+      {
+        "id": "vercel-deployment",
+        "name": "Vercel deployment",
+        "summary": "How the branch's newest Vercel deployment went, else production's; click for the site or its build logs",
+        "sample": "Ready · 3m ago",
+        "icon": "icons/vercel.svg",
+        "color": "000000",
+        "run": "sh \"$OCTET_PLUGIN_DIR/scripts/chip.sh\"",
+        "whenFiles": [
+          ".vercel",
+          "vercel.json"
+        ],
+        "refreshSeconds": 20,
+        "timeoutSeconds": 25,
+        "enabledByDefault": true
+      }
+    ],
+    "menuItems": [
+      {
+        "id": "deploy",
+        "title": "Deploy Preview to Vercel",
+        "whenFiles": [
+          ".vercel",
+          "vercel.json"
+        ],
+        "run": "sh \"$OCTET_PLUGIN_DIR/scripts/menu.sh\" deploy",
+        "timeoutSeconds": 8
+      },
+      {
+        "id": "dev",
+        "title": "Run vercel dev",
+        "whenFiles": [
+          ".vercel",
+          "vercel.json"
+        ],
+        "run": "sh \"$OCTET_PLUGIN_DIR/scripts/menu.sh\" dev",
+        "timeoutSeconds": 8
+      },
+      {
+        "id": "env",
+        "title": "Pull Vercel Environment",
+        "whenFiles": [
+          ".vercel",
+          "vercel.json"
+        ],
+        "run": "sh \"$OCTET_PLUGIN_DIR/scripts/menu.sh\" env",
+        "timeoutSeconds": 8
+      },
+      {
+        "id": "link",
+        "title": "Link to Vercel Project",
+        "whenFiles": [
+          ".vercel",
+          "vercel.json"
+        ],
+        "run": "sh \"$OCTET_PLUGIN_DIR/scripts/menu.sh\" link",
+        "timeoutSeconds": 8
+      }
+    ],
+    "completions": [
+      {
+        "command": "vercel",
+        "path": [
+          "inspect"
+        ],
+        "summary": "Show a deployment, or its build logs",
+        "run": "sh \"$OCTET_PLUGIN_DIR/scripts/complete.sh\"",
+        "kind": "branch",
+        "cacheSeconds": 30,
+        "timeoutSeconds": 15,
+        "firstArgumentOnly": true,
+        "opensMenu": true
+      },
+      {
+        "command": "vercel",
+        "path": [
+          "logs"
+        ],
+        "summary": "Follow a deployment's runtime logs",
+        "run": "sh \"$OCTET_PLUGIN_DIR/scripts/complete.sh\"",
+        "kind": "branch",
+        "cacheSeconds": 30,
+        "timeoutSeconds": 15,
+        "firstArgumentOnly": true,
+        "opensMenu": true
+      },
+      {
+        "command": "vercel",
+        "path": [
+          "promote"
+        ],
+        "summary": "Make a deployment production",
+        "run": "sh \"$OCTET_PLUGIN_DIR/scripts/complete.sh\"",
+        "kind": "branch",
+        "cacheSeconds": 30,
+        "timeoutSeconds": 15,
+        "firstArgumentOnly": true,
+        "opensMenu": true
+      },
+      {
+        "command": "vercel",
+        "path": [
+          "rollback"
+        ],
+        "summary": "Roll production back to a deployment",
+        "run": "sh \"$OCTET_PLUGIN_DIR/scripts/complete.sh\"",
+        "kind": "branch",
+        "cacheSeconds": 30,
+        "timeoutSeconds": 15,
+        "firstArgumentOnly": true,
+        "opensMenu": true
+      },
+      {
+        "command": "vercel",
+        "path": [
+          "redeploy"
+        ],
+        "summary": "Build a deployment again",
+        "run": "sh \"$OCTET_PLUGIN_DIR/scripts/complete.sh\"",
+        "kind": "branch",
+        "cacheSeconds": 30,
+        "timeoutSeconds": 15,
+        "firstArgumentOnly": true,
+        "opensMenu": true
+      },
+      {
+        "command": "vercel",
+        "path": [
+          "remove"
+        ],
+        "summary": "Remove a deployment",
+        "run": "sh \"$OCTET_PLUGIN_DIR/scripts/complete.sh\"",
+        "kind": "branch",
+        "cacheSeconds": 30,
+        "timeoutSeconds": 15,
+        "firstArgumentOnly": true
+      },
+      {
+        "command": "vercel",
+        "path": [
+          "switch"
+        ],
+        "summary": "Switch to a team",
+        "run": "sh \"$OCTET_PLUGIN_DIR/scripts/complete.sh\" teams",
+        "kind": "branch",
+        "cacheSeconds": 300,
+        "timeoutSeconds": 15,
+        "firstArgumentOnly": true,
+        "opensMenu": true,
+        "perFolder": false
+      }
+    ]
+  }
+}
